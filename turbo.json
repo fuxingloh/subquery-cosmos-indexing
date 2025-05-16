@@ -1,0 +1,23 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "generate": {
+      "inputs": ["schema.graphql"],
+      "outputs": ["src/types"]
+    },
+    "build": {
+      "dependsOn": ["generate", "^build"],
+      "inputs": [
+        "tsconfig.json",
+        "src",
+        "project.ts"
+      ],
+      "outputs": ["dist", "project.yaml"]
+    },
+    "test": {
+      "inputs": ["tsconfig.json", "src"],
+      "dependsOn": ["build"]
+    }
+  }
+}

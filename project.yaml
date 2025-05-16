@@ -1,0 +1,29 @@
+# // Auto-generated , DO NOT EDIT
+specVersion: 1.0.0
+name: subquery-cosmos-indexing
+runner:
+  node:
+    name: '@subql/node-cosmos'
+    version: '>=3.0.0'
+  query:
+    name: '@subql/query'
+    version: '*'
+schema:
+  file: ./schema.graphql
+network:
+  chainId: bbn-1
+  endpoint:
+    - 'https://babylon-archive.nodes.guru/rpc'
+    - 'https://babylon-archive-rpc.polkachu.com'
+dataSources:
+  - kind: cosmos/Runtime
+    startBlock: 1
+    mapping:
+      file: ./dist/index.js
+      handlers:
+        - handler: handleMetadataUpdated
+          kind: cosmos/EventHandler
+          filter:
+            type: wasm-MetadataUpdated
+            attributes:
+              _contract_address: bbn1qtvnjezrv3fnqvuq869595zq6e2jk0zfhupg52aua0d6ht2a4jjsprqeae

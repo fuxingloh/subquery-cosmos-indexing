@@ -1,0 +1,36 @@
+{
+  "name": "subquery-cosmos-indexing",
+  "main": "dist/index.js",
+  "scripts": {
+    "generate": "subql codegen",
+    "build": "subql build",
+    "test": "subql-node-cosmos test",
+    "start:docker": "docker-compose pull && docker-compose up --remove-orphans",
+    "dev": "subql codegen && subql build && docker-compose pull && docker-compose up --remove-orphans",
+    "prepack": "rm -rf dist && npm run build",
+    "build:develop": "NODE_ENV=develop subql codegen && NODE_ENV=develop subql build"
+  },
+  "files": [
+    "dist",
+    "schema.graphql",
+    "project.yaml"
+  ],
+  "dependencies": {
+    "@subql/types-core": "^2.0.2",
+    "@subql/types-cosmos": "^4.1.1",
+    "pino": "^7.8.0",
+    "ts-proto": "^1.112.1",
+    "tslib": "^2.3.1"
+  },
+  "devDependencies": {
+    "@subql/cli": "^5.9.1",
+    "@subql/testing": "^2.2.4",
+    "@subql/node-cosmos": "^5.0.2",
+    "dotenv": "^16.5.0",
+    "turbo": "^2.4.4",
+    "typescript": "^5",
+    "vitest": "^3.1.1",
+    "@types/node": "^20"
+  },
+  "packageManager": "pnpm@10.2.0"
+}

@@ -1,0 +1,28 @@
+# To improve query performance, we strongly suggest adding indexes to any field that you plan to filter or sort by
+# Add the `@index` or `@index(unique: true)` annotation after any non-key field
+# https://academy.subquery.network/build/graphql.html#indexing-by-non-primary-key-field
+
+type VaultShares @entity {
+  id: ID!
+  vault: String!
+  recipient: String!
+  amount: String!
+}
+
+type Operator @entity {
+  id: ID!
+  tx: String!
+  height: BigInt!
+  address: String!
+  uri: String
+  name: String
+}
+
+type Service @entity {
+  id: ID!
+  tx: String!
+  height: BigInt!
+  address: String!
+  name: String
+  uri: String
+}
